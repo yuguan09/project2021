@@ -1,0 +1,332 @@
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+\usepackage{braket}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{解説ノート理}
+	\author{bq18026\\関宇}
+	\date{2.23，2021}
+	
+	
+\begin{document}
+\maketitle
+
+
+bell inequality:ベルの不平等
+
+
+benchmark
+
+spookiness
+
+
+Bell-type nonlocal behaviors
+
+quantum imaging
+
+
+Spontaneous Parametric Down-Conversion:SPDC,自発的パラメトリック下方変換
+
+Spatial correlation and momentum anticorrelations
+
+
+Near and far field\\
+
+Ghost imaging:is a technique that produces an image of an object by combining information from two light detectors\\
+
+down converter:
+
+
+EPR paradox:Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?
+
+dimensional domain:
+
+free particle:自由粒子
+
+\newpage
+
+\section{Schrodingerの方程式}
+
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\ket{\psi(t)}=\widehat{H}\ket{\psi(t)}
+\end{equation}
+
+この微分方程式について、
+
+\begin{equation}
+    \begin{aligned}
+      \ket{\psi(t)}&=exp[\frac{\widehat{H}}{i\hbar}]\ket{\psi(0)}\\
+      \\
+    \end{aligned}
+\end{equation}
+
+ここで、Hamiltonianのスペクトル分解を展開し(1)
+
+\begin{equation}
+    \ket{\psi(t)}=\sum_{n=0}^{n=\infty}exp[-iE_{n}t/\hbar]\bra{n}\ket{\psi(t_{0})}\ket{n}
+\end{equation}
+
+
+\section{プロパゲーター}
+
+時間で、ある電子の位置が確定できれば(6)
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{note1.jpg}
+    \caption{}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{note2.jpg}
+    \caption{}
+\end{figure}
+
+
+the propagator of a quantum system(遷移確率振幅)
+
+\begin{equation}
+    \begin{aligned}
+      K(x',t';x_{0},t_{0})&=\bra{\psi(x',t')}\ket{\psi(x_{0},t_{0}}\\
+      \\
+      &=\bra{x'}U(t)\ket{x_{0}}\\
+    \end{aligned}
+\end{equation}
+
+
+Green関数の性質より、(5)
+
+\begin{equation}
+    \begin{aligned}
+      &\psi(xb,tb)=\bra{xb,tb}\ket{\psi}\\
+      \\
+      &=\int_{\infty}^{\infty}dxa\bra{\psi(xb,tb)}\ket{\psi(xa,ta)}\psi(xa,ta)\\
+      \\
+      &=\int dxa K(xb,tb;xa,ta)\psi(xa,ta)\\
+    \end{aligned}
+\end{equation}
+
+この結果を物理の言葉で述べることができる．$(x_{b},t_{b})$に到着する全振幅(すなわち$\psi(x_{b},t_{b})$)は、$(x_{a},t_{a})$に到達する全振幅(すなわち$(\psi(x_{a},t_{a}))$)とaからbにいく振幅(すなわち$(K(xb,tb;xa,ta))$)を掛けたものを、xaのすべての可能な値について和あるいは積分を行ったものである(7)．
+
+\section{経路積分}
+
+\subsection{作用関数}
+
+あらゆる可能な経路について計算可能な量$S$が存在し
+
+\begin{equation}
+    S=\int_{t_{a}}^{t_{b}}dt L(\Dot{x},x,t)
+\end{equation}
+
+ここで、Lはラグランジアンである．
+
+\begin{equation}
+    L=\frac{m}{2}\Dot{x}^{2}-V(x,t)
+\end{equation}
+
+\subsection{最小作用の原理}
+$\Bar{x}(t)$がSの極値を与えるという条件は(7)
+
+\begin{equation}
+    \delta S=S[\Bar{x}+\delta x]-S[\Bar{x}]=0
+\end{equation}
+ということを意味する．式６を用いて、
+
+\begin{equation}
+    \begin{aligned}
+      S[\Bar{x}+\delta x]&=\int_{t_{a}}^{t_{b}}dt L(\Dot{x}+\delta x,x+\delta x,t)\\
+      \\
+      &=\int_{t_{a}}^{t_{b}}dt [L(\Dot{x},x,t)+\delta\Dot{x}\frac{\partial L}{\partial\Dot{x}}+\delta x\frac{\partial L}{\partial x}]\\
+      \\
+      &=S[x]+\int_{t_{a}}^{t_{b}}dt[\delta\Dot{x}\frac{\partial L}{\partial\Dot{x}}+\delta x\frac{\partial L}{\partial x}]
+    \end{aligned}
+\end{equation}
+
+部分積分をすると、Sの変分は
+
+\begin{equation}
+    \delta S=[\delta x\frac{\partial L}{\partial\Dot{x}}]^{t_{b}}_{t_{a}}-\int_{t_{a}}^{t_{b}}dt\delta x[\frac{d}{dt}(\frac{\partial L}{\partial\Dot{x}})-\frac{\partial L}{\partial x}]
+\end{equation}
+
+
+\begin{equation}
+    \frac{d}{dt}(\frac{\partial L}{\partial\Dot{x}})-\frac{\partial L}{\partial x}=0    
+\end{equation}
+
+\subsection{量子力学的振幅}
+ここで量子力学の法則を与えることができる．我々はそれぞれの軌道がaからbに到る全振幅にどれだけ寄与するかを言わなければいけない．作用の極値を与える特別な経路のみ寄与するのでなく、すべての経路が寄与する．ある一つの経路が持つ位相は、その経路の作用Sを作用量子の単位$\hbar$で割ったものである．全振幅はそれぞれの経路からの寄与$\phi[x(t)]$を足し合わせたものである．
+
+\begin{equation}
+    K(b,a)=\sum\phi[x(t)]
+\end{equation}
+
+$\sum:$aからbに到るすべての経路\\
+
+一つの経路の寄与は作用Sに比例する位相をもつ．
+
+\begin{equation}
+    \phi[x(t)]=Ae^{(i/\hbar)S[x(t)]}
+\end{equation}
+
+A:規定化定数
+
+\subsection{Lebesgue measure(7)}
+全ての経路の部分集合を選ぶ．そのために独立時間を幅$\varepsilon$の小区間に分ける．これにより$t_{a}$と$t_{b}$の間に間隔$\varepsilon$で存在する時刻$t_{i}$の集合が得られる．それぞれの時刻$t_{i}$で特定の点$x_{i}$を選ぶ．このようにして選んだ点を直線で結ぶと一つの経路が構成される．このようにして構成された全ての経路についての和を定義するには、$x_{i}(i=1......,N-1)$についての多重積分を行えばよい．
+
+
+\begin{equation}
+    K(b,a)\thicksim\int...\int\int dx_{1}dx_{2}...dx_{N-1}\phi[x(t)]
+\end{equation}
+
+
+しかしこの操作の極限をとることができない．なぜなら経路の数は高次の無限大であるから、経路の空間の測度は部分集合と同程度とはならないからである．規格化因子$A^{-N}$を導入し、
+
+\begin{equation}
+    A=(\frac{2\pi i\hbar\varepsilon}{m})^{1/2}
+\end{equation}
+この因子を用いると極限が存在し、
+
+\begin{equation}
+     K(b,a)=\lim_{\varepsilon\to 0}\frac{1}{A}\int...\int\int \frac{d_{x_{1}}}{A}...\frac{dx_{N-1}}{A}e^{(1/\hbar)S[b,a]}
+\end{equation}
+正常Riemannの定義が不適切でLebesgueのような別の定義を用いる必要がある．したがって、ややあいまいな表現を用いて,全ての経路についての和を
+
+\begin{equation}
+    K(b,a)=\int_{a}^{b}\mathcal{D}x(t)e^{(i/\hbar)S[b,a]}
+\end{equation}
+
+と書くことにする．これを経路積分と呼ぶ．経路についての和を表しているのは$\mathcal{D}$である．
+
+\newpage
+
+\section{Schrödinger方程式(7)}
+
+\begin{equation}
+    \psi(x_{a},x_{b})=\int_{-\infty}^{\infty}dx_{a}K(x_{b},t_{b};x_{a},t_{a})\psi(x_{a},t_{a})
+\end{equation}
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}dy exp{\frac{i}{\hbar}\varepsilon L(\frac{x-y}{\varepsilon},\frac{x+y}{2})}\psi(y,t)
+\end{equation}
+
+運動する粒子の場合、
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}dy exp(\frac{i}{\hbar}\frac{m(x-y)^{2}}{2\varepsilon})\times exp(-\frac{i}{\hbar}\varepsilon V(\frac{x+y}{2},t))\psi(y,t)
+\end{equation}
+
+
+yがxに近いときに限り、$y=x+\eta$とおくと$\eta$が小さいところだけが積分の主要な寄与を与えるものと期待できるのである．
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}d\eta exp(\frac{im\eta^{2}}{2\hbar\varepsilon})exp(-\frac{i}{\hbar}\varepsilon V(x+\frac{\eta}{2},t))\psi(x+\eta,t)
+\end{equation}\\
+
+途中式いろいろ......\\
+
+\begin{equation}
+    \frac{\partial\psi}{\partial t}=-\frac{i}{\hbar}[-\frac{\hbar^{2}}{2m}\frac{\partial^{2}\psi}{\partial x^{2}}+V(x,t)\psi]
+\end{equation}
+
+\newpage
+
+\begin{equation}
+    \int dxa K(xb,tb;xa,ta)\psi(xa,ta)
+\end{equation}
+
+\begin{equation}
+    =\int dxa\int dxa+1...K(xa+2,xa+1;\epsilon)K(xa+1,xa;\epsilon)\psi(xa,ta)
+\end{equation}
+
+\begin{equation}
+    K(xj+1,xj;\epsilon)=\bra{xj+1}exp[-\frac{i}{\hbar}\widehat{H}\epsilon]\ket{xj}
+\end{equation}
+
+Hamiltonianについて(2)、
+
+\begin{equation}
+    \widehat{H}=\frac{p^{2}}{2m}+V(x)
+\end{equation}
+
+式8,9より、
+
+\begin{equation}
+    K(xj+1,xj;\epsilon)=\bra{xj+1}exp[-\frac{i}{\hbar}\frac{p^{2}}{2m}\epsilon-\frac{i}{\hbar}V(x)\epsilon]\ket{xj}
+\end{equation}
+
+
+\section{reduced state}
+
+私の知りたい状態は$\rho_{s}$とすると、
+
+\begin{equation}
+    \begin{aligned}
+      &Pr[a|A,\rho_{s}]\\
+      \\
+      &=Pr[a|A\otimes I,\ket{\psi}]
+    \end{aligned}
+\end{equation}
+
+合成系全体で$\ket{\psi}$という状態の下で、そのうち部分的にAを測定したわけですが、これを$A\otimes I$という物理量を測定することにほかなりません．
+
+\begin{thebibliography}{9}
+  \bibitem{harris} Dennis V. Perepelitsa,
+    ``Path Integrals in Quantum Mechanics.,
+    MIT Department of Physics
+70 Amherst Ave.
+Cambridge, MA 02142.
+
+  \bibitem{susan} 廣島文生,
+    ``シュレディンガー方程式と経路積分'' Int. J. Comput.
+    Vis., vol.23, no.1, pp.45-78, May 1997.
+    
+\bibitem{susan} YU GUAN,
+    ``計算レポート7
+不確定性原理,'' , NOV. 2020.
+%\end{thebibliography}
+
+\bibitem{harris} (Takashi ICHINOSE),
+    ``(Introduction to Path Integral –Path Integral in Imaginary-Time as Wel.'',
+    数理解析研究所講究録
+第 1723 巻 2011 年 1-22.
+
+\bibitem{harris} (湯川秀樹),
+    ``量子力学ⅱ'',
+    岩波書店　
+ 2011 年 11-25.
+ 
+ \bibitem{harris} (黎偉健),
+    ``粒子物理行 (四) 路徑積分',
+    
+\bibitem{harris} (R.P.ファインマン　A.R.ヒッブス),
+    ``量子力学と経路積分'',
+    みすず書房　
+ 2017 年 3月10日.
+  
+
+\end{thebibliography}
+
+
+
+\end{document}
