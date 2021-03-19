@@ -1,0 +1,651 @@
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+\usepackage{braket}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{解説ノート理}
+	\author{bq18026\\関宇}
+	\date{2.23，2021}
+	
+	
+\begin{document}
+\maketitle
+
+
+bell inequality:ベルの不平等
+
+
+benchmark
+
+spookiness
+
+
+Bell-type nonlocal behaviors
+
+quantum imaging
+
+
+Spontaneous Parametric Down-Conversion:SPDC,自発的パラメトリック下方変換
+
+Spatial correlation and momentum anticorrelations
+
+
+Near and far field\\
+
+Ghost imaging:is a technique that produces an image of an object by combining information from two light detectors\\
+
+down converter:
+
+
+EPR paradox:Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?
+
+dimensional domain:
+
+free particle:自由粒子
+
+\newpage
+
+\section{Schrodingerの方程式}
+
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\ket{\psi(t)}=\widehat{H}\ket{\psi(t)}
+\end{equation}
+
+この微分方程式について、
+
+\begin{equation}
+    \begin{aligned}
+      \ket{\psi(t)}&=exp[\frac{\widehat{H}}{i\hbar}]\ket{\psi(0)}\\
+      \\
+    \end{aligned}
+\end{equation}
+
+ここで、Hamiltonianのスペクトル分解を展開し(1)
+
+\begin{equation}
+    \ket{\psi(t)}=\sum_{n=0}^{n=\infty}exp[-iE_{n}t/\hbar]\bra{n}\ket{\psi(t_{0})}\ket{n}
+\end{equation}
+
+
+\section{プロパゲーター}
+
+時間で、ある電子の位置が確定できれば(6)
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{note1.jpg}
+    \caption{}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{note2.jpg}
+    \caption{}
+\end{figure}
+
+
+the propagator of a quantum system(遷移確率振幅)
+
+\begin{equation}
+    \begin{aligned}
+      K(x',t';x_{0},t_{0})&=\bra{\psi(x',t')}\ket{\psi(x_{0},t_{0}}\\
+      \\
+      &=\bra{x'}U(t)\ket{x_{0}}\\
+    \end{aligned}
+\end{equation}
+
+
+Green関数の性質より、(5)
+
+\begin{equation}
+    \begin{aligned}
+      &\psi(xb,tb)=\bra{xb,tb}\ket{\psi}\\
+      \\
+      &=\int_{\infty}^{\infty}dxa\bra{\psi(xb,tb)}\ket{\psi(xa,ta)}\psi(xa,ta)\\
+      \\
+      &=\int dxa K(xb,tb;xa,ta)\psi(xa,ta)\\
+    \end{aligned}
+\end{equation}
+
+この結果を物理の言葉で述べることができる．$(x_{b},t_{b})$に到着する全振幅(すなわち$\psi(x_{b},t_{b})$)は、$(x_{a},t_{a})$に到達する全振幅(すなわち$(\psi(x_{a},t_{a}))$)とaからbにいく振幅(すなわち$(K(xb,tb;xa,ta))$)を掛けたものを、xaのすべての可能な値について和あるいは積分を行ったものである(7)．
+
+\section{経路積分}
+
+\subsection{作用関数}
+
+あらゆる可能な経路について計算可能な量$S$が存在し
+
+\begin{equation}
+    S=\int_{t_{a}}^{t_{b}}dt L(\Dot{x},x,t)
+\end{equation}
+
+ここで、Lはラグランジアンである．
+
+\begin{equation}
+    L=\frac{m}{2}\Dot{x}^{2}-V(x,t)
+\end{equation}
+
+\subsection{最小作用の原理}
+$\Bar{x}(t)$がSの極値を与えるという条件は(7)
+
+\begin{equation}
+    \delta S=S[\Bar{x}+\delta x]-S[\Bar{x}]=0
+\end{equation}
+ということを意味する．式６を用いて、
+
+\begin{equation}
+    \begin{aligned}
+      S[\Bar{x}+\delta x]&=\int_{t_{a}}^{t_{b}}dt L(\Dot{x}+\delta x,x+\delta x,t)\\
+      \\
+      &=\int_{t_{a}}^{t_{b}}dt [L(\Dot{x},x,t)+\delta\Dot{x}\frac{\partial L}{\partial\Dot{x}}+\delta x\frac{\partial L}{\partial x}]\\
+      \\
+      &=S[x]+\int_{t_{a}}^{t_{b}}dt[\delta\Dot{x}\frac{\partial L}{\partial\Dot{x}}+\delta x\frac{\partial L}{\partial x}]
+    \end{aligned}
+\end{equation}
+
+部分積分をすると、Sの変分は
+
+\begin{equation}
+    \delta S=[\delta x\frac{\partial L}{\partial\Dot{x}}]^{t_{b}}_{t_{a}}-\int_{t_{a}}^{t_{b}}dt\delta x[\frac{d}{dt}(\frac{\partial L}{\partial\Dot{x}})-\frac{\partial L}{\partial x}]
+\end{equation}
+
+
+\begin{equation}
+    \frac{d}{dt}(\frac{\partial L}{\partial\Dot{x}})-\frac{\partial L}{\partial x}=0    
+\end{equation}
+
+\subsection{量子力学的振幅}
+ここで量子力学の法則を与えることができる．我々はそれぞれの軌道がaからbに到る全振幅にどれだけ寄与するかを言わなければいけない．作用の極値を与える特別な経路のみ寄与するのでなく、すべての経路が寄与する．ある一つの経路が持つ位相は、その経路の作用Sを作用量子の単位$\hbar$で割ったものである．全振幅はそれぞれの経路からの寄与$\phi[x(t)]$を足し合わせたものである．
+
+\begin{equation}
+    K(b,a)=\sum\phi[x(t)]
+\end{equation}
+
+$\sum:$aからbに到るすべての経路\\
+
+一つの経路の寄与は作用Sに比例する位相をもつ．
+
+\begin{equation}
+    \phi[x(t)]=Ae^{(i/\hbar)S[x(t)]}
+\end{equation}
+
+A:規定化定数
+
+\subsection{Lebesgue measure(7)}
+全ての経路の部分集合を選ぶ．そのために独立時間を幅$\varepsilon$の小区間に分ける．これにより$t_{a}$と$t_{b}$の間に間隔$\varepsilon$で存在する時刻$t_{i}$の集合が得られる．それぞれの時刻$t_{i}$で特定の点$x_{i}$を選ぶ．このようにして選んだ点を直線で結ぶと一つの経路が構成される．このようにして構成された全ての経路についての和を定義するには、$x_{i}(i=1......,N-1)$についての多重積分を行えばよい．
+
+
+\begin{equation}
+    K(b,a)\thicksim\int...\int\int dx_{1}dx_{2}...dx_{N-1}\phi[x(t)]
+\end{equation}
+
+
+しかしこの操作の極限をとることができない．なぜなら経路の数は高次の無限大であるから、経路の空間の測度は部分集合と同程度とはならないからである．規格化因子$A^{-N}$を導入し、
+
+\begin{equation}
+    A=(\frac{2\pi i\hbar\varepsilon}{m})^{1/2}
+\end{equation}
+この因子を用いると極限が存在し、
+
+\begin{equation}
+     K(b,a)=\lim_{\varepsilon\to 0}\frac{1}{A}\int...\int\int \frac{d_{x_{1}}}{A}...\frac{dx_{N-1}}{A}e^{(1/\hbar)S[b,a]}
+\end{equation}
+正常Riemannの定義が不適切でLebesgueのような別の定義を用いる必要がある．したがって、ややあいまいな表現を用いて,全ての経路についての和を
+
+\begin{equation}
+    K(b,a)=\int_{a}^{b}\mathcal{D}x(t)e^{(i/\hbar)S[b,a]}
+\end{equation}
+
+と書くことにする．これを経路積分と呼ぶ．経路についての和を表しているのは$\mathcal{D}$である．
+
+\newpage
+
+\section{Schrödinger方程式(7)}
+
+\begin{equation}
+    \psi(x_{a},x_{b})=\int_{-\infty}^{\infty}dx_{a}K(x_{b},t_{b};x_{a},t_{a})\psi(x_{a},t_{a})
+\end{equation}
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}dy exp{\frac{i}{\hbar}\varepsilon L(\frac{x-y}{\varepsilon},\frac{x+y}{2})}\psi(y,t)
+\end{equation}
+
+運動する粒子の場合、
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}dy exp(\frac{i}{\hbar}\frac{m(x-y)^{2}}{2\varepsilon})\times exp(-\frac{i}{\hbar}\varepsilon V(\frac{x+y}{2},t))\psi(y,t)
+\end{equation}
+
+
+yがxに近いときに限り、$y=x+\eta$とおくと$\eta$が小さいところだけが積分の主要な寄与を与えるものと期待できるのである．
+
+\begin{equation}
+    \psi(x,t+\varepsilon)=\frac{1}{A}\int_{-\infty}^{\infty}d\eta exp(\frac{im\eta^{2}}{2\hbar\varepsilon})exp(-\frac{i}{\hbar}\varepsilon V(x+\frac{\eta}{2},t))\psi(x+\eta,t)
+\end{equation}\\
+
+途中式いろいろ......\\
+
+\begin{equation}
+    \frac{\partial\psi}{\partial t}=-\frac{i}{\hbar}[-\frac{\hbar^{2}}{2m}\frac{\partial^{2}\psi}{\partial x^{2}}+V(x,t)\psi]
+\end{equation}
+
+\newpage
+
+\begin{equation}
+    \int dxa K(xb,tb;xa,ta)\psi(xa,ta)
+\end{equation}
+
+\begin{equation}
+    =\int dxa\int dxa+1...K(xa+2,xa+1;\epsilon)K(xa+1,xa;\epsilon)\psi(xa,ta)
+\end{equation}
+
+\begin{equation}
+    K(xj+1,xj;\epsilon)=\bra{xj+1}exp[-\frac{i}{\hbar}\widehat{H}\epsilon]\ket{xj}
+\end{equation}
+
+Hamiltonianについて(2)、
+
+\begin{equation}
+    \widehat{H}=\frac{p^{2}}{2m}+V(x)
+\end{equation}
+
+式8,9より、
+
+\begin{equation}
+    K(xj+1,xj;\epsilon)=\bra{xj+1}exp[-\frac{i}{\hbar}\frac{p^{2}}{2m}\epsilon-\frac{i}{\hbar}V(x)\epsilon]\ket{xj}
+\end{equation}
+
+
+\section{reduced state}
+
+私の知りたい状態は$\rho_{s}$とすると、
+
+\begin{equation}
+    \begin{aligned}
+      &Pr[a|A,\rho_{s}]\\
+      \\
+      &=Pr[a|A\otimes I,\ket{\psi}]
+    \end{aligned}
+\end{equation}
+
+合成系全体で$\ket{\psi}$という状態の下で、そのうち部分的にAを測定したわけですが、これを$A\otimes I$という物理量を測定することにほかなりません．
+
+\begin{thebibliography}{9}
+  \bibitem{harris} Dennis V. Perepelitsa,
+    ``Path Integrals in Quantum Mechanics.,
+    MIT Department of Physics
+70 Amherst Ave.
+Cambridge, MA 02142.
+
+  \bibitem{susan} 廣島文生,
+    ``シュレディンガー方程式と経路積分'' Int. J. Comput.
+    Vis., vol.23, no.1, pp.45-78, May 1997.
+    
+\bibitem{susan} YU GUAN,
+    ``計算レポート7
+不確定性原理,'' , NOV. 2020.
+%\end{thebibliography}
+
+\bibitem{harris} (Takashi ICHINOSE),
+    ``(Introduction to Path Integral –Path Integral in Imaginary-Time as Wel.'',
+    数理解析研究所講究録
+第 1723 巻 2011 年 1-22.
+
+\bibitem{harris} (湯川秀樹),
+    ``量子力学ⅱ'',
+    岩波書店　
+ 2011 年 11-25.
+ 
+ \bibitem{harris} (黎偉健),
+    ``粒子物理行 (四) 路徑積分',
+    
+\bibitem{harris} (R.P.ファインマン　A.R.ヒッブス),
+    ``量子力学と経路積分'',
+    みすず書房　
+ 2017 年 3月10日.
+  
+
+\end{thebibliography}
+
+
+
+\end{document}
+
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+\usepackage{braket}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amsthm}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{量子力学の理論と数学}
+	\author{bq18026\\関宇}
+	\date{12.10，2020}
+	
+	
+\begin{document}
+\maketitle
+
+\section{}
+
+\subsection{条件付き確率}
+
+ある事象が起こるという条件の下で考える確率を条件付き確率という．事象$B$が起こる条件のもとで、事象Aが起こる条件付き確率${\rm Pr}(A|B)$は、
+
+\begin{equation}
+    Pr(A|B)=\frac{Pr(A\cap B)}{Pr(B)}
+\end{equation}
+で定義される．ここで、分子はAかつBが起こる確率、Pr(B)はBを起こる確率．したがって、$Pr(\ket{\psi})$を(状態$\ket{\psi}$を準備する確率)、$Pr(A=a\cap\ket{\psi})$を(状態が$\ket{\psi}$でかつAの測定値がaとなる確率)とすると、
+
+\begin{equation}
+    \bra{\psi}P_{a}\ket{\psi}=Pr(A=a|\ket{\psi})=\frac{Pr(A=a\cap\ket{\psi})}{Pr(\ket{\psi})}
+\end{equation}
+
+\subsection{周辺分布}
+$Pr(A=a,B=b|\ket{\psi})$のように複数出力を持つ場合、一つの出力のみに着目した確率分布を周辺分布と呼ぶ．周辺分布は、確率の和法則より、着目している出力以外の確率を全て足すことにより求められる．例えば、Aの周辺分布は
+\begin{equation}
+    \sum_{b}Pr(A=a,B=b|\ket{\psi})
+\end{equation}
+あらゆる状態$\ket{\psi}$の下で、同時確率分布の周辺分布が、
+\begin{equation}
+    \begin{aligned}
+        &\bra{\psi}Pa\ket{\psi}=\sum_{b}Pr(A=a,B=b|\ket{\psi})\\
+        \\
+        &\bra{\psi}Qb\ket{\psi}=\sum_{a}Pr(A=a,B=b|\ket{\psi})
+    \end{aligned}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ a/b & 0 & 1 & marginal distribution of A\\ 
+ \hline
+ 0 & 1/4 & 1/4 & 1/2\\ 
+ \hline
+ 1 & 1/4 & 1/4 & 1/2\\ 
+ \hline
+ marginal distribution of B & 1/2 & 1/2 &  1 \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{凸集合と凸関数}
+実ベクトル空間$V$の任意の二つの要素$v_{1},v_{2}\in V,p\in [0,1]$に対して、$pv_{1}+(1-p)v_{2}$で表わさVの要素をｐについて凸結合という．特に、Vの部分集合Wで任意の二つの要素$w_{1},w_{2}\in W,p\in [0,1]$について凸結合$pw_{1}+(1-p)w_{2}$がWに含まれるとき、凸(部分)集合と呼ばれる．幾何学的には、凸集合はへこみのない部分集合である．\\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{1.png}
+    \caption{convex combination}
+\end{figure}
+密度演算子の集合は凸集合である．特に、凸集合Wの元ｗが非自明な凸結合を持たない時、ｗは端点(extreme point)と呼ばれる．すなわち、$w_{1},w_{2}\in W,p\in(0,1)$に対して、$w=pw_{1}+(1-p)w_{2}$が成り立つならば、$w=w_{1}=w_{2}$である．幾何学的には、端点は凸集合の角である．ｄ個の事象について確率分布の集合において、端点は1......dのうちのどれか一つの事象が確率１で起きる確率分布のみである．また、純粋状態は密度演算子からなる凸集合の端点である．\\
+
+二つの凸集合W,Vが与えられ、 WからＶへの写像ｆが以下の条件を満たすとき、(すなわち凸結合を保存する時)fはアフィンであるという．
+\begin{equation}
+    f(pw_{1}+(1-p)w_{2})=pf(w_{1})+(1-p)f(w_{2})
+\end{equation}
+次に、凸集合Ｗ確率分布実数$\mathcal{R}$への写像ｆが以下の条件を満たすとき、ｆは凸関数であるという．
+\begin{equation}
+    f(pw_{1}+(1-p)w_{2})\leqq pf(w_{1})+(1-p)f(w_{2})
+\end{equation}
+特に、ある$0<p<1$について等号が成り立つのは$w_{1}=w_{2}$に限られるとき、ｆは狭義凸関数(strictly convex function)であるという．\\
+
+\newpage
+
+命題4.4.4
+
+    $\rho SE$を$\mathcal{H}_{SE}$上の密度演算子とすると、その部分トレース$\rho s:=Tr_{E}\rho SE$は$\mathcal{H}_{s}$上の密度演算子である．\\
+    
+    証明:
+    
+    演習問題24(3)より、$\rho s$の正値性が成り立つ．
+    
+    \begin{equation}
+        \begin{aligned}
+            Tr \rho s&=\sum_{i}\bra{\psi_{i}}\rho s\ket{\psi_{i}}\\
+            \\
+            &=\sum_{i,k}\bra{\psi_{i}\otimes e_{k}}C\ket{\psi_{i}\otimes e_{k}}\\
+            \\
+            &=Tr_{SE}\rho SE=1
+        \end{aligned}
+    \end{equation}
+    
+密度演算子$\rho s:=Tr_{E}\rho SE$を$\rho SE$の縮約密度演算子と呼ぶ．\\
+
+
+命題4.4.5
+
+全体系S+E系の状態が」密度演算子$\rho SE$で記述されるとき、S系の縮約状態は縮約密度演算子$\rho s:=Tr_{E}\rho SE$で与えられる．\\
+
+証明:
+
+Sの縮約状態を対応する密度演算子を$\sigma s$とする．S上の任意の物理量$A=\sum_{a}aP_{a}$の測定を考える．
+
+この物理量はS+E上で
+\begin{equation}
+    A\otimes I_{E}=\sum_{a}a(P_{a}\otimes　I_{E})
+\end{equation}
+で記述されるので、
+
+
+\begin{equation}
+    Pr(A=a|\sigma s)=Tr_{SE}(P_{a}\otimes　I_{E}\rho SE)
+\end{equation}
+
+演習問題24(2)より、
+
+\begin{equation}
+    Tr_{SE}(P_{a}\otimes　I_{E}\rho SE)=Tr_{S}(P{a}(Tr_{E}\rho SE))
+\end{equation}
+
+さらに，Bornの確率規則より、
+
+\begin{equation}
+    Tr_{S}(P{a}(Tr_{E}\rho SE))=Pr(A=a|\rho s)\ket{\phi}\bra{\psi}
+\end{equation}
+となる．Aは任意なので、$\sigma S=\rho S$を得る．\\
+
+
+\section{純粋化}
+
+あらゆる混合状態は、合成系上の純粋状態に帰着できる．すなわち、系Sの状態が混合状態であったとしても、ある補助系Aを考えることで、Sの状態を合成系S+A上の純粋状態$\rho SA$の縮約状態とすることができるのである．これを状態の純粋化と呼ぶ．
+
+
+\section{同時測定}
+同時測定とは、あらゆる状態の下で、
+
+
+\end{document}
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+\usepackage{braket}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{ノートまとめ}
+	\author{bq18026\\関宇}
+	\date{3.5，2021}
+	
+	
+\begin{document}
+\maketitle
+
+
+Composite quantum systems\\
+
+consider the composite quantum$\ket{\Phi^{+}}_{AB}:$
+
+\begin{equation}
+    \ket{\Phi^{+}}_{AB}=\frac{1}{\sqrt{2}}(\ket{0}_{A}\ket{0}_{B}+\ket{1}_{A}\ket{1}_{B})
+\end{equation}
+
+Show that the entangled state has the following representation in
+the +/- basis:
+
+\begin{equation}
+    \ket{\Phi^{+}}_{AB}=\frac{1}{\sqrt{2}}(\ket{+}_{A}\ket{+}_{B}+\ket{-}_{A}\ket{-}_{B})
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+    &\ket{+}=\frac{1}{\sqrt{2}}\left(\begin{array}{c} 
+    1  \\ 
+    1
+\end{array}\right),\ket{-}=\frac{1}{\sqrt{2}}\left(\begin{array}{c} 
+    1  \\ 
+    -1
+\end{array}\right)\\
+\\
+&\ket{+}\otimes\ket{+}=\left(\begin{array}{c} 
+   1/2  \\ 
+    1/2 \\
+     1/2  \\
+    1/2  
+\end{array}\right),\ket{-}\otimes\ket{-}=\left(\begin{array}{c} 
+   1/2  \\ 
+    -1/2 \\
+     -1/2  \\
+    1/2  
+\end{array}\right)\\
+\\
+&\frac{1}{\sqrt{2}}(\ket{+}_{A}\ket{+}_{B}+\ket{-}_{A}\ket{-}_{B})\\
+\\
+&=\frac{1}{\sqrt{2}}\left(\begin{array}{c} 
+   1 \\ 
+    0 \\
+     0  \\
+    1  
+\end{array}\right)=\frac{1}{\sqrt{2}}(\ket{0}_{A}\ket{0}_{B}+\ket{1}_{A}\ket{1}_{B})
+    \end{aligned}
+\end{equation}
+
+
+we can describe the system as being in the following
+ensemble of states:
+
+
+    $\ket{0}_{A}\ket{0}_{B}$ with probability $1/2$
+    
+    $\ket{1}_{A}\ket{1}_{B}$ with probability $1/2$
+    
+    
+because of the $\ket{\psi^{+}}_{AB}$\\
+
+computational basis:
+
+\begin{equation}
+    \ket{00},\ket{01},\ket{10},\ket{11},
+\end{equation}
+
+
+Exercise 3.6.2:\\
+
+
+for X operator,eigenvalue $(\pm1)$ with the eigenvector as the follow:
+
+\begin{equation}
+    v_{1}=\frac{1}{\sqrt{2}}[\ket{0}+\ket{1}]
+\end{equation}
+
+\begin{equation}
+    v_{-1}=\frac{1}{\sqrt{2}}[\ket{0}-\ket{1}]
+\end{equation}
+
+
+for qubit state $\ket{+},\ket{-}$,the probability of the measurement in the X basis can be calculated by Born rule.
+
+\begin{equation}
+    Pr[X=1|\ket{+}]=1
+\end{equation}
+
+\begin{equation}
+    Pr[X=1|\ket{+}]=0
+\end{equation}
+
+\begin{equation}
+    Pr[X=-1|\ket{-}]=0
+\end{equation}
+
+\begin{equation}
+    Pr[X=-1|\ket{-}]=1
+\end{equation}
+
+
+In other word, the probability of two qubit system,that Alice and Bob both have the same state can be calculated by Born rule
+
+\begin{equation}
+    Pr[Alice=\ket{+},Bob=\ket{+}|\ket{\xi}]=|\bra{v_{1}v_{1}}\ket{\xi}|^{2}=1/2
+\end{equation}
+
+\begin{equation}
+    Pr[Alice=\ket{-},Bob=\ket{-}|\ket{\xi}]=|\bra{v_{-1}v_{-1}}\ket{\xi}|^{2}=1/2
+\end{equation}
+
+The result was satisfied as the following probability distribution
+
+\begin{equation}
+    p_{XA,XB}(x_{A},x_{B})=\frac{1}{2}\delta(x_{A},x_{B})
+\end{equation}
+
+
+Quantum cloning:\\
+
+Quantum cloning is a process that takes an arbitrary, unknown quantum state and makes an exact copy without altering the original state in any way. Quantum cloning is forbidden by the laws of quantum mechanics as shown by the no cloning theorem,
+
+
+\end{document}
